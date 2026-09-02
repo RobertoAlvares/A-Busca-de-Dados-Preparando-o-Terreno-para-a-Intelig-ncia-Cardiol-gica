@@ -45,17 +45,25 @@ mais enxuta. O resultado final tem **120 pacientes**, com as 5
 severidades de diagnóstico (de ausência de doença a grau 4) todas
 representadas — evitando viés por classe ausente.
 
-**Variáveis mais relevantes clinicamente**, e por quê importam para um
-projeto de IA em cardiologia:
-- **Pressão arterial em repouso** e **colesterol**: são, isoladamente, os
-  fatores de risco mais associados a mortalidade cardiovascular em
-  estudos populacionais — qualquer modelo preditivo de risco precisa
-  delas.
-- **Frequência cardíaca máxima** e **angina induzida por exercício**:
-  centrais para as fases futuras de monitoramento contínuo via wearable
-  (sensores) e detecção de eventos em tempo real.
-- **Severidade do diagnóstico**: é a variável-alvo — sem ela não há como
-  treinar nenhum classificador de risco nas próximas fases.
+**Dicionário de variáveis** — as mais relevantes clinicamente, e por quê
+importam para um projeto de IA em cardiologia:
+
+| Variável | Nome | Domínio | Relevância clínica |
+|---|---|---|---|
+| `age` | idade | anos | fator de risco não modificável para doença cardiovascular |
+| `sex` | sexo | 1=masc, 0=fem | apresentação clínica difere entre sexos |
+| `cp` | tipo de dor no peito | 1-4 | triagem de risco de isquemia miocárdica |
+| `trestbps` | pressão arterial em repouso | mmHg | hipertensão crônica gera sobrecarga cardíaca — um dos fatores de risco mais associados a mortalidade cardiovascular |
+| `chol` | colesterol sérico | mg/dl | marcador de formação de placa nas coronárias — outro fator de risco central |
+| `fbs` | glicemia de jejum >120 | 1=sim, 0=não | indica diabetes, comorbidade de alto risco |
+| `restecg` | ECG em repouso | 0-2 | detecta alteração elétrica de sobrecarga |
+| `thalach` | freq. cardíaca máxima | bpm | central pro monitoramento contínuo via wearable nas próximas fases |
+| `exang` | angina induzida por esforço | 1=sim, 0=não | indicador direto de insuficiência de fluxo coronário |
+| `oldpeak` | depressão do segmento ST | mm | forte marcador de isquemia |
+| `slope` | inclinação do ST no pico | 1-3 | risco isquêmico associado à morfologia |
+| `ca` | nº de vasos afetados | 0-3 | obstrução coronária visualizada por fluoroscopia |
+| `thal` | talassemia | 3, 6, 7 | diferencia tecido infartado de tecido isquêmico viável |
+| `num` | severidade do diagnóstico | 0-4 | **variável-alvo** — sem ela não há como treinar nenhum classificador de risco nas próximas fases |
 
 **Arquivo:** [`heart_disease_cardioia_final.csv`](./heart_disease_cardioia_final.csv)
 (120 linhas, 14 colunas, sem valores faltantes). Dataset de origem

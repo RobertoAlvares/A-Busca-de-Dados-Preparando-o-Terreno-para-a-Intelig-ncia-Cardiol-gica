@@ -43,7 +43,7 @@ ficam fora do git por volume. O relatório completo, com o critério de amostrag
 e o enquadramento de governança, está em
 [`document/fase1_relatorio.md`](document/fase1_relatorio.md). O estado exato do
 repositório na entrega está preservado na tag
-[`fase1-entrega`](../../tree/fase1-entrega).
+[`fase1-entrega`](https://github.com/RobertoAlvares/A-Busca-de-Dados-Preparando-o-Terreno-para-a-Intelig-ncia-Cardiol-gica/tree/fase1-entrega).
 
 ### Fase 2 — Diagnóstico Automatizado: IA no Estetoscópio Digital
 

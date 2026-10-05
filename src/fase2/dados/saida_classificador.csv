@@ -1,0 +1,26 @@
+frase,real,previsto,prob_alto_risco,acertou
+"Senti o peito apertado de tanto chorar com uma notícia triste, passou depois.",baixo risco,alto risco,0.502,False
+"Senti o coração bater forte depois de subir quatro andares de escada, normal para mim.",baixo risco,baixo risco,0.483,True
+"Estou com dor de cabeça leve no fim do dia, melhora quando descanso.",baixo risco,baixo risco,0.331,True
+Tenho dor no peito e o médico disse semana passada que meu colesterol está altíssimo.,alto risco,alto risco,0.615,True
+Tenho uma dor no ombro que aparece quando levanto o braço no treino.,baixo risco,alto risco,0.526,False
+Tenho uma tosse seca que começou junto com a alergia de primavera.,baixo risco,alto risco,0.542,False
+Fiquei sem ar de repente depois de uma viagem longa de avião e a panturrilha está inchada.,alto risco,baixo risco,0.402,False
+Sinto cãibra na panturrilha à noite depois de jogar futebol.,baixo risco,baixo risco,0.314,True
+Meu joelho dói quando desço escada.,baixo risco,baixo risco,0.431,True
+"Meu coração acelerou quando fiquei nervoso na prova, mas passou em poucos minutos.",baixo risco,baixo risco,0.339,True
+O peito dói quando respiro e a falta de ar começou do nada hoje cedo.,alto risco,alto risco,0.506,True
+Senti uma pontada rápida no peito que durou dois segundos e não voltou.,baixo risco,alto risco,0.692,False
+As pernas incharam muito em três dias e agora fico sem ar ao subir um degrau.,alto risco,alto risco,0.521,True
+Meu pai está com dor no peito e a boca ficou torta de repente.,alto risco,alto risco,0.619,True
+A pressão está controlada com o remédio e não sinto nada diferente.,baixo risco,alto risco,0.532,False
+Sinto pontadas fortes no peito e o coração parece que vai sair pela boca.,alto risco,alto risco,0.564,True
+Sinto uma pressão no meio do peito que já dura mais de vinte minutos.,alto risco,alto risco,0.535,True
+Sinto formigamento na mão quando fico muito tempo no celular.,baixo risco,baixo risco,0.342,True
+A pressão subiu para vinte e dois por treze e estou com náusea e tontura.,alto risco,alto risco,0.543,True
+"A dor no estômago veio com suor frio e falta de ar, nunca senti isso antes.",alto risco,alto risco,0.687,True
+A palpitação veio junto com tontura forte e quase caí no chão.,alto risco,alto risco,0.531,True
+Sinto o coração batendo muito irregular e o pulso está fraco.,alto risco,alto risco,0.502,True
+"A pressão está muito alta e estou com uma dor de cabeça explosiva, a pior da minha vida.",alto risco,alto risco,0.515,True
+"O aperto no peito voltou, agora mais forte e mais demorado que da outra vez.",alto risco,alto risco,0.515,True
+O coração disparou com um susto no trânsito e voltou ao normal em seguida.,baixo risco,alto risco,0.53,False

@@ -1,0 +1,11 @@
+categoria,frase,esperado,previsto,prob_alto_risco,confere
+negacao,"Não estou com dor no peito nem falta de ar, só uma dor no joelho.",baixo risco,alto risco,0.658,False
+negacao,"Sem suor frio, sem enjoo, só um cansaço de fim de semana.",baixo risco,baixo risco,0.464,True
+atipico,Minha tia de oitenta anos só está com um mal-estar e muito cansada desde cedo.,alto risco,alto risco,0.561,True
+atipico,"Estou com uma dor no estômago estranha e suando, sou diabético.",alto risco,alto risco,0.62,True
+intensidade,Dor no peito leve que passa em segundos quando mudo de posição.,baixo risco,baixo risco,0.438,True
+intensidade,Dor no peito fortíssima que não passa há quarenta minutos.,alto risco,alto risco,0.713,True
+vocabulario,Tô com uma agonia no peito e uma gastura que não passa.,alto risco,alto risco,0.695,True
+vocabulario,O coração tá batendo descompassado e eu tô zonzo.,alto risco,alto risco,0.578,True
+contexto,Fiquei sem ar de tanto rir com meus amigos.,baixo risco,baixo risco,0.435,True
+contexto,"O médico pediu exame de rotina, não sinto dor no peito.",baixo risco,alto risco,0.569,False

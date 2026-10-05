@@ -1,183 +1,176 @@
-# CardioIA — Batimentos de Dados: Mapeando o Coração Moderno
+# FIAP - Faculdade de Informática e Administração Paulista
 
-**FIAP · Inteligência Artificial · 2º Ano · Turma 2TIAOR · 2026/2**
-**Aluno:** Roberto Almeida Alvares (RM568265) · **Grupo:** 19
+<p align="center">
+<a href= "https://www.fiap.com.br/"><img src="assets/logo-fiap.png" alt="FIAP - Faculdade de Informática e Admnistração Paulista" border="0" width=40% height=40%></a>
+</p>
 
-Primeira fase do projeto **CardioIA**, uma plataforma digital que simula um
-ecossistema de cardiologia inteligente, integrando dados clínicos, Machine
-Learning, Visão Computacional, IoT e agentes de IA para triagem,
-diagnóstico, monitoramento e previsão médica.
+<br>
 
-Nesta fase, o papel assumido é o de **cientista de dados hospitalar**:
-levantar, organizar e entender os dados que vão alimentar os módulos
-inteligentes das próximas fases do projeto — sempre com atenção à
-governança dos dados envolvidos.
+# CardioIA — plataforma de cardiologia inteligente
 
----
+## Grupo 19 (Fase 1) · Grupo 44 (Fase 2) — integrante único
 
-## 1. Construção da base de dados de pacientes
+## 👨‍🎓 Integrantes:
+- <a href="https://www.linkedin.com/company/inova-fusca">Roberto Almeida Alvares — RM568265</a>
 
-A base numérica reúne informações clínicas reais de pacientes cardíacos:
-idade, sexo, pressão arterial em repouso, colesterol sérico, glicemia de
-jejum, resultado de eletrocardiograma em repouso, frequência cardíaca
-máxima atingida, presença de angina induzida por exercício, entre outras
-variáveis, totalizando **14 campos clínicos por paciente**.
+## 👩‍🏫 Professores:
+### Tutor(a)
+- <a href="https://www.linkedin.com/company/inova-fusca">Nome do Tutor</a>
+### Coordenador(a)
+- <a href="https://www.linkedin.com/company/inova-fusca">Nome do Coordenador</a>
 
-**Origem dos dados:** são dados reais, não simulados. Vêm da *Cleveland
-Clinic Foundation* e do *V.A. Medical Center* (Long Beach), coletados por
-Robert Detrano, M.D., e disponibilizados publicamente pelo UCI Machine
-Learning Repository. Escolhi dado real em vez de simulado por um motivo
-prático: as próximas fases do projeto (diagnóstico automatizado,
-previsão de eventos cardíacos) vão precisar de relação clínica de
-verdade entre as variáveis, e não faria sentido trocar a base depois.
+## 🎥 Vídeos de demonstração
 
-**Processo de preparação:** o arquivo original (303 pacientes) veio sem
-cabeçalho e com 6 valores clínicos faltantes, marcados como `?`. Essas
-linhas foram descartadas por princípio de qualidade de dado — melhor não
-ter a informação do que preencher um valor clínico arbitrário. Em
-seguida, foi aplicado um critério de seleção determinístico: percorrer o
-dataset e manter a primeira ocorrência de cada combinação de valor em
-todas as variáveis categóricas (sexo, tipo de dor no peito, resultado de
-ECG, presença de angina, inclinação do segmento ST, número de vasos
-afetados, tipo de talassemia e severidade do diagnóstico), garantindo que
-**nenhuma variação clínica relevante ficasse de fora** mesmo com uma base
-mais enxuta. O resultado final tem **120 pacientes**, com as 5
-severidades de diagnóstico (de ausência de doença a grau 4) todas
-representadas — evitando viés por classe ausente.
+| Fase | Vídeo (YouTube, não listado) |
+|---|---|
+| Fase 2 — Diagnóstico Automatizado | *link a inserir antes da entrega* |
 
-**Dicionário de variáveis** — as mais relevantes clinicamente, e por quê
-importam para um projeto de IA em cardiologia:
+## 📜 Descrição
 
-| Variável | Nome | Domínio | Relevância clínica |
-|---|---|---|---|
-| `age` | idade | anos | fator de risco não modificável para doença cardiovascular |
-| `sex` | sexo | 1=masc, 0=fem | apresentação clínica difere entre sexos |
-| `cp` | tipo de dor no peito | 1-4 | triagem de risco de isquemia miocárdica |
-| `trestbps` | pressão arterial em repouso | mmHg | hipertensão crônica gera sobrecarga cardíaca — um dos fatores de risco mais associados a mortalidade cardiovascular |
-| `chol` | colesterol sérico | mg/dl | marcador de formação de placa nas coronárias — outro fator de risco central |
-| `fbs` | glicemia de jejum >120 | 1=sim, 0=não | indica diabetes, comorbidade de alto risco |
-| `restecg` | ECG em repouso | 0-2 | detecta alteração elétrica de sobrecarga |
-| `thalach` | freq. cardíaca máxima | bpm | central pro monitoramento contínuo via wearable nas próximas fases |
-| `exang` | angina induzida por esforço | 1=sim, 0=não | indicador direto de insuficiência de fluxo coronário |
-| `oldpeak` | depressão do segmento ST | mm | forte marcador de isquemia |
-| `slope` | inclinação do ST no pico | 1-3 | risco isquêmico associado à morfologia |
-| `ca` | nº de vasos afetados | 0-3 | obstrução coronária visualizada por fluoroscopia |
-| `thal` | talassemia | 3, 6, 7 | diferencia tecido infartado de tecido isquêmico viável |
-| `num` | severidade do diagnóstico | 0-4 | **variável-alvo** — sem ela não há como treinar nenhum classificador de risco nas próximas fases |
+O **CardioIA** simula um ecossistema de cardiologia inteligente: dados clínicos,
+Machine Learning, Visão Computacional, IoT e agentes de IA para triagem,
+diagnóstico, monitoramento e previsão. Cada fase do curso constrói uma parte, e
+todas vivem neste repositório.
 
-**Arquivo:** [`heart_disease_cardioia_final.csv`](./heart_disease_cardioia_final.csv)
-(120 linhas, 14 colunas, sem valores faltantes). Dataset de origem
-completo, para referência: [`heart_disease_cleveland.csv`](./heart_disease_cleveland.csv)
-(303 linhas).
+### Fase 1 — A Busca de Dados
 
----
+Papel de **cientista de dados hospitalar**: levantar e organizar as bases que
+alimentam as fases seguintes. Base numérica com **120 pacientes e 14 variáveis
+clínicas**, sem valor faltante, a partir de dados reais da *Cleveland Clinic
+Foundation* (UCI Heart Disease); dois textos para NLP; e 100 laudos de ECG
+(*Khan & Hussain, Mendeley Data*, DOI 10.17632/gwbz3fsgp8.2, CC BY 4.0), que
+ficam fora do git por volume. O relatório completo, com o critério de amostragem
+e o enquadramento de governança, está em
+[`document/fase1_relatorio.md`](document/fase1_relatorio.md). O estado exato do
+repositório na entrega está preservado na tag
+[`fase1-entrega`](../../tree/fase1-entrega).
 
-## 2. Coleta de dados de fontes públicas
+### Fase 2 — Diagnóstico Automatizado: IA no Estetoscópio Digital
 
-Além dos dados numéricos, a base foi complementada com conteúdo textual e
-visual de fontes públicas e verificáveis — nenhum dado foi gerado
-artificialmente.
+Nesta fase o sistema começa a **ler linguagem natural** — relatos de pacientes
+escritos como as pessoas realmente falam.
 
-### Textos (`docs/`)
+**Parte 1 — extração de sintomas por mapa de conhecimento.** Dez relatos
+simulados; um mapa `sintoma → doença` em CSV liga expressões coloquiais ("aperto
+no peito", "o sapato aperta", "falha uma batida") a sete hipóteses: Infarto,
+Angina, Insuficiência Cardíaca, Arritmia, Crise Hipertensiva e duas causas não
+cardíacas (musculoesquelética e ansiedade). O extrator conta **expressões
+distintas**, não ocorrências, e tem duas regras que mudam o resultado:
 
-Dois textos sobre saúde cardiovascular, de naturezas complementares:
+- **Negação é tratada.** "sem falta de ar" não conta como sintoma presente —
+  fica registrado como *negado* e é ignorado.
+- **Empate não vira diagnóstico.** Duas hipóteses com a mesma contagem geram
+  `EM ABERTO`, com as concorrentes listadas.
 
-- **`harvey_1628_motion_of_heart.txt`** — obra clássica de William
-  Harvey (1628), que descreveu pela primeira vez a circulação sanguínea.
-  Texto histórico-fundacional da cardiologia, disponível integralmente
-  via Projeto Gutenberg (domínio público).
-- **`scielo_fatores_risco_cardiovascular_2019.txt`** — síntese de artigo
-  científico sobre fatores de risco cardiovascular em países de língua
-  portuguesa (dados do estudo Global Burden of Disease 2019), publicado
-  em periódico científico brasileiro de acesso aberto.
+Resultado: 10 de 10 relatos com hipótese sugerida.
 
-**Aplicação em NLP:** esses textos são material de entrada natural para
-tarefas de Processamento de Linguagem Natural nas próximas fases do
-projeto — extração de sintomas e fatores de risco mencionados em texto
-livre, classificação de tópicos (ex: prevenção x tratamento x
-epidemiologia) e, no caso do texto científico, análise de relações entre
-fatores de risco e desfechos, que pode alimentar o assistente virtual
-cardiológico previsto para fases futuras. Nenhum dos dois textos contém
-dado pessoal de paciente identificável — são conteúdo científico e
-histórico já publicado.
+**Parte 2 — classificador de risco por TF-IDF.** Dataset de **100 frases**
+rotuladas em "alto risco" / "baixo risco", balanceado (50/50), vetorizado com
+TF-IDF e classificado com Scikit-learn. Três modelos comparados; o principal é
+escolhido pela **maior média na validação cruzada**, e não pela acurácia de uma
+única divisão, porque com 25 frases de teste uma divisão só é sorte demais.
 
-### Imagens (link externo, ver seção 4)
+| Modelo | Acurácia no teste | Validação cruzada (5×) |
+|---|---|---|
+| **Regressão Logística (unigramas)** — principal | 72,0% | 81,0% ± 11,6 |
+| Regressão Logística (uni + bigramas) | 72,0% | 76,0% ± 12,8 |
+| Árvore de Decisão (uni + bigramas) | 60,0% | 56,0% ± 3,7 |
 
-100 imagens reais de laudos de eletrocardiograma (ECG) de 12 derivações,
-de pacientes com infarto do miocárdio, no formato usado em ambiente
-hospitalar (traçados I, II, III, aVR, aVL, aVF, V1-V6 + tira de ritmo).
+Matriz de confusão do modelo principal no teste (25 frases):
 
-**Aplicação em Visão Computacional:** esse tipo de imagem é o material
-de entrada típico para detecção de padrões (identificação automática de
-elevação ou depressão do segmento ST), reconhecimento de anomalias de
-ritmo e, futuramente, classificação automática de gravidade — tarefas
-centrais da fase de diagnóstico por Visão Computacional do CardioIA.
+| | previsto alto | previsto baixo |
+|---|---|---|
+| **real alto** | 12 | 1 |
+| **real baixo** | 6 | 6 |
 
----
+Além das métricas, o script imprime as frases que o modelo errou, os termos de
+maior peso em cada direção e um **teste de estresse** com 10 frases fora do
+dataset (negação, apresentação atípica, intensidade, vocabulário coloquial e
+contexto) — 2 das 10 divergem do esperado. Tudo é gravado em
+`src/fase2/dados/saida_classificador.csv` e `saida_teste_estresse.csv`.
 
-## 3. Governança de dados e IA
+**Critério de rotulagem do dataset.** As frases são **simuladas** e os rótulos
+seguem a lógica de sinais de alarme usada em triagem: dor torácica em repouso ou
+prolongada, irradiação para braço/mandíbula/costas, síncope, falta de ar em
+repouso ou ao deitar, sinais neurológicos com pressão muito alta → alto risco;
+sintoma leve, localizado, com causa aparente e autolimitado → baixo risco.
+**Os rótulos não foram validados por profissional de saúde.** Servem a um
+exercício acadêmico, não a uso clínico.
 
-Dado de saúde é dado pessoal sensível pela LGPD (Lei 13.709/2018). Os
-dados usados aqui já vêm de fontes públicas tratadas pelos autores
-originais — sem nome, sem identificador de paciente. Mesmo assim, tratei
-a base pensando em proteção de dado sensível por dois motivos: primeiro,
-porque é a prática certa mesmo com dado já anonimizado; segundo, porque
-as próximas fases do projeto vão envolver coleta de dado real de
-paciente (wearable, assistente virtual), e aí esse cuidado deixa de ser
-opcional.
+### 🧭 Análise de padrões, distorções e governança
 
-**Pontos aplicados nesta fase:**
+> *Seção do autor — em elaboração.*
 
-- **Base legal considerada** para o cenário de uso futuro do projeto:
-  tratamento de dado de saúde exclusivamente por profissionais e serviços
-  de saúde, para fins de tutela da saúde — a hipótese legal mais aderente
-  a uma plataforma de apoio a diagnóstico cardiológico.
-- **Anonimização tem limite:** dado anonimizado sai do escopo principal
-  da lei, mas isso não é definitivo. Se der pra reverter com esforço
-  razoável — por exemplo, cruzando uma combinação rara de variáveis
-  clínicas com outra fonte — volta a ser dado pessoal. Por isso reduzi o
-  dataset numérico para o menor volume necessário: menos dado circulando
-  é menos risco, mesmo sendo um dataset de pesquisa pública.
-- **Qualidade do dado como princípio de governança**, não só de boa
-  prática técnica: os registros com valor clínico faltante foram
-  descartados em vez de preenchidos artificialmente, porque dado
-  impreciso em contexto de saúde tem potencial de dano direto se um
-  modelo futuro aprender em cima dele.
-- **Próximo passo de governança**, a considerar já a partir da Fase 2:
-  qualquer coleta de dado real de paciente deve vir acompanhada de um
-  relatório de avaliação de impacto à proteção de dados antes da
-  implementação — não depois.
+### O limite que este projeto assume
 
----
+Os dois módulos são **apoio à decisão, não diagnóstico**, e os scripts dizem
+isso ao usuário no fim de cada execução. Dado de saúde é **dado pessoal
+sensível** (LGPD, Art. 5º, II); por isso todos os relatos e frases da Fase 2 são
+simulados, e nenhum dado real de paciente entra no repositório público.
 
-## 4. Links públicos
+## 📁 Estrutura de pastas
 
-Todos os arquivos preparados nesta fase (incluindo o volume completo de
-imagens, não versionado neste repositório por tamanho) estão disponíveis
-publicamente para consulta e correção:
+Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
-**Google Drive (pasta completa — dataset, textos e 100 imagens de ECG):**
-https://drive.google.com/drive/folders/16hSIALtvht82R25h1ht2KRYX3H7_Gubf?usp=sharing
+- <b>.github</b>: arquivos de configuração específicos do GitHub.
 
-Fonte das imagens de ECG: *ECG Images dataset of Cardiac Patients*, Ali
-Haider Khan & Muzammil Hussain, Ch. Pervaiz Elahi Institute of Cardiology
-Multan / University of Management and Technology Lahore, Mendeley Data,
-DOI 10.17632/gwbz3fsgp8.2, licença CC BY 4.0.
+- <b>assets</b>: elementos não-estruturados deste repositório, como imagens.
 
----
+- <b>config</b>: arquivos de configuração usados para definir parâmetros e ajustes do projeto.
 
-## Estrutura do repositório
+- <b>document</b>: documentos do projeto.
+  - `fase1_relatorio.md` — relatório completo da Fase 1.
+  - `ai_project_document_fiap.md` — documento de projeto no modelo da FIAP.
 
-```
-.
-├── README.md
-├── heart_disease_cardioia_final.csv   # base final (120 pacientes, 14 variáveis)
-├── heart_disease_cleveland.csv        # dataset de origem completo (303 pacientes)
-└── docs/
-    ├── harvey_1628_motion_of_heart.txt
-    └── scielo_fatores_risco_cardiovascular_2019.txt
+- <b>scripts</b>: scripts auxiliares para tarefas específicas.
+
+- <b>src</b>: todo o código-fonte e os dados do projeto, por fase.
+  - `fase1/dados/` — base de pacientes (120) e base completa de referência (303).
+  - `fase1/textos/` — textos para NLP (Harvey, 1628; SciELO, 2019).
+  - `fase2/extrator_sintomas.py` — Parte 1: extração por mapa de conhecimento.
+  - `fase2/classificador_risco.py` — Parte 2: classificador TF-IDF.
+  - `fase2/dados/` — relatos, mapa de conhecimento, dataset rotulado e saídas.
+
+- <b>README.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
+
+## 🔧 Como executar o código
+
+**Pré-requisitos:** Python 3.8 ou superior.
+
+```bash
+git clone https://github.com/RobertoAlvares/A-Busca-de-Dados-Preparando-o-Terreno-para-a-Intelig-ncia-Cardiol-gica.git
+cd A-Busca-de-Dados-Preparando-o-Terreno-para-a-Intelig-ncia-Cardiol-gica
+pip install -r requirements.txt
 ```
 
-As 100 imagens de ECG não estão versionadas neste repositório (volume
-grande de arquivos binários) — estão disponíveis no link do Google Drive
-acima, como orienta o enunciado da atividade.
+**Fase 2, Parte 1** — só biblioteca padrão:
+
+```bash
+cd src/fase2
+python extrator_sintomas.py
+```
+
+**Fase 2, Parte 2** — requer `scikit-learn` (instalado acima):
+
+```bash
+cd src/fase2
+python classificador_risco.py
+```
+
+Os resultados são reprodutíveis: divisão de treino/teste, validação cruzada e
+árvore de decisão usam semente fixa (42).
+
+## 🗃 Histórico de lançamentos
+
+* 0.2.0 - 05/10/2026
+    * Fase 2 completa: extração de sintomas (Parte 1) e classificador de risco
+      TF-IDF com três modelos, validação cruzada e teste de estresse (Parte 2).
+    * Repositório reorganizado no template oficial da FIAP, um repositório para
+      todas as fases.
+* 0.1.0 - 02/09/2026
+    * Fase 1 entregue: bases de pacientes, textos e imagens de ECG, com
+      enquadramento de governança (tag `fase1-entrega`).
+
+## 📋 Licença
+
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/agodoi/template">MODELO GIT FIAP</a> por <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://fiap.com.br">Fiap</a> está licenciado sobre <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>

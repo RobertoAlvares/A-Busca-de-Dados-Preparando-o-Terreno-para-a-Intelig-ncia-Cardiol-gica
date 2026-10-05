@@ -1,0 +1,28 @@
+Sintoma 1,Sintoma 2,Doença Associada
+aperto no peito,dor no peito,Infarto
+dor no peito,irradia para o braço esquerdo,Infarto
+suor frio,enjoo,Infarto
+peso no estômago,suor frio,Infarto
+dor no peito,suor frio,Infarto
+dor no peito,melhora quando eu descanso,Angina
+subo a escada,aperto no peito,Angina
+caminho,dor no peito,Angina
+falta de ar,dificuldade para respirar,Angina
+esforço físico,dor no peito,Angina
+cansaço constante,fadiga,Insuficiência Cardíaca
+acordo cansado,cansaço,Insuficiência Cardíaca
+falta de ar,travesseiros,Insuficiência Cardíaca
+inchando,sapato aperta,Insuficiência Cardíaca
+inchando,quilos,Insuficiência Cardíaca
+pernas inchadas,inchaço nos pés,Insuficiência Cardíaca
+coração dispara,falha uma batida,Arritmia
+palpitação,tonto,Arritmia
+desmaiei,palpitação,Arritmia
+coração disparado,batedeira,Arritmia
+dor de cabeça,nuca,Crise Hipertensiva
+visão embaçada,pressão,Crise Hipertensiva
+pressão alta,dor de cabeça,Crise Hipertensiva
+incômodo nas costas,giro o tronco,Causa não cardíaca - musculoesquelética
+carreguei caixas,costas,Causa não cardíaca - musculoesquelética
+coração acelerar,nervoso,Causa não cardíaca - ansiedade
+passa sozinho,coração acelerar,Causa não cardíaca - ansiedade

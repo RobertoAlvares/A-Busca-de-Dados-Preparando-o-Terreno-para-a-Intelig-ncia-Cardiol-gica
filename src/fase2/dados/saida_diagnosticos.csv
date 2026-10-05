@@ -1,0 +1,11 @@
+id,relato,sintomas_identificados,sintomas_negados,diagnostico_sugerido,expressoes_casadas
+1,Há dois dias sinto um aperto no peito que aparece quando subo a escada do trabalho e só passa se eu parar e sentar.,aperto no peito; subo a escada,,Angina,2
+2,"Faz umas três semanas que acordo cansado mesmo dormindo oito horas, e agora preciso de dois travesseiros porque deitado me dá falta de ar.",acordo cansado; falta de ar; travesseiros,,Insuficiência Cardíaca,3
+3,"Toda vez que caminho até a padaria, uns quatrocentos metros, começa uma dor no peito que irradia para o braço esquerdo e melhora quando eu descanso.",caminho; dor no peito; irradia para o braço esquerdo; melhora quando eu descanso,,Angina,3
+4,"De ontem para hoje meu coração dispara do nada, parece que falha uma batida, e fico tonto quando levanto rápido da cadeira.",coração dispara; falha uma batida; tonto,,Arritmia,3
+5,"Estou com dor de cabeça forte na nuca desde ontem de manhã, com visão embaçada, e medi a pressão em casa: deu dezoito por onze.",dor de cabeça; nuca; pressão; visão embaçada,,Crise Hipertensiva,4
+6,"Depois que carreguei caixas na mudança do sábado ficou um incômodo nas costas que dói mais quando eu giro o tronco, sem falta de ar e sem enjoo.",carreguei caixas; costas; giro o tronco; incômodo nas costas,enjoo; falta de ar,Causa não cardíaca - musculoesquelética,4
+7,"Minhas pernas estão inchando no fim do dia há umas duas semanas, o sapato aperta, e subi três quilos sem mudar a alimentação.",inchando; quilos; sapato aperta,,Insuficiência Cardíaca,3
+8,"Desde a madrugada estou com enjoo, suor frio e um cansaço estranho; não é bem dor, é um peso no estômago que não passa.",cansaço; enjoo; peso no estômago; suor frio,,Infarto,3
+9,"Desmaiei no ponto de ônibus na semana passada, sem nenhum aviso, e desde então sinto palpitação quando fico muito tempo em pé.",desmaiei; palpitação,,Arritmia,2
+10,"Quando fico nervoso numa reunião sinto o coração acelerar por alguns minutos, mas passa sozinho e não atrapalha minha rotina.",coração acelerar; nervoso; passa sozinho,,Causa não cardíaca - ansiedade,3

@@ -11,13 +11,13 @@
 ## Grupo 19 (Fase 1) · Grupo 44 (Fase 2) — integrante único
 
 ## 👨‍🎓 Integrantes:
-- <a href="https://www.linkedin.com/company/inova-fusca">Roberto Almeida Alvares — RM568265</a>
+- Roberto Almeida Alvares — RM568265
 
 ## 👩‍🏫 Professores:
 ### Tutor(a)
-- <a href="https://www.linkedin.com/company/inova-fusca">Nome do Tutor</a>
+- <a href="https://www.linkedin.com/in/leonardoorabona/">Leonardo Ruiz Orabona</a>
 ### Coordenador(a)
-- <a href="https://www.linkedin.com/company/inova-fusca">Nome do Coordenador</a>
+- <a href="https://www.linkedin.com/in/andre-godoi-chiovato-83730228/">André Godoi Chiovato</a>
 
 ## 🎥 Vídeos de demonstração
 

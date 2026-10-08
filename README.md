@@ -97,9 +97,30 @@ sintoma leve, localizado, com causa aparente e autolimitado → baixo risco.
 **Os rótulos não foram validados por profissional de saúde.** Servem a um
 exercício acadêmico, não a uso clínico.
 
-### 🧭 Análise de padrões, distorções e governança
+### 🧭 Análise de padrões e distorções
 
-> *Seção do autor — em elaboração.*
+**O modelo aprendeu o estilo de quem escreveu as frases, não só os sintomas.**
+Os termos que mais empurram para baixo risco são "quando" e "depois" — nenhum
+dos dois é sintoma. No dataset, "quando" aparece em 19 frases de baixo risco e
+em 3 de alto; "depois", em 15 contra 3, porque as frases leves explicam a causa
+("depois da academia"). O efeito aparece no pior erro do modelo: o único
+paciente grave liberado foi *"Fiquei sem ar de repente **depois** de uma viagem
+longa de avião e a panturrilha está inchada"*.
+
+**"Não" virou sinal de gravidade.** O termo aparece em 10 frases de alto risco
+("não passa", "não melhora") e em 4 de baixo, e o modelo aprendeu a ler "não"
+como alarme. Por isso erra "A pressão está controlada com o remédio e não
+sinto nada diferente" e as duas frases do teste de estresse com "não … dor no peito". O
+TF-IDF trata a frase como um conjunto de palavras sem ordem: não percebe que o
+"não" nega o sintoma. A Parte 1 acerta esses casos porque trata a negação por
+regra explícita.
+
+**A acurácia esconde o tipo de erro.** As duas regressões logísticas acertam
+72%, mas o modelo principal libera 1 paciente grave e dá 6 alarmes falsos,
+enquanto o outro libera 3 graves. Numa triagem, o número que importa é o
+recall de alto risco (0,923 no modelo principal), não a acurácia. Com só 100
+frases rotuladas por uma pessoa e variação de ±11,6 pontos na validação
+cruzada, esses resultados indicam padrões, não comprovam desempenho.
 
 ### O limite que este projeto assume
 

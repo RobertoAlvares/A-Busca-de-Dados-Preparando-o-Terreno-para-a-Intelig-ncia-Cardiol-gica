@@ -23,7 +23,7 @@
 
 | Fase | Vídeo (YouTube, não listado) |
 |---|---|
-| Fase 2 — Diagnóstico Automatizado | [youtu.be/rlHPc3Kz-tI](https://youtu.be/rlHPc3Kz-tI) |
+| Fase 2 — Diagnóstico Automatizado | [youtu.be/YRMtSnPapXI](https://youtu.be/YRMtSnPapXI) |
 
 ## 📜 Descrição
 

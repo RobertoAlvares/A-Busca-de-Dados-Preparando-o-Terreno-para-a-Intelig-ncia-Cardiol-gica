@@ -149,7 +149,8 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
   - `fase1/dados/` — base de pacientes (120) e base completa de referência (303).
   - `fase1/textos/` — textos para NLP (Harvey, 1628; SciELO, 2019).
   - `fase2/extrator_sintomas.py` — Parte 1: extração por mapa de conhecimento.
-  - `fase2/classificador_risco.py` — Parte 2: classificador TF-IDF.
+  - `fase2/classificador_risco.ipynb` — Parte 2 em notebook: TF-IDF, classificação e avaliação, com a saída executada.
+  - `fase2/classificador_risco.py` — o mesmo classificador, para rodar no terminal.
   - `fase2/dados/` — relatos, mapa de conhecimento, dataset rotulado e saídas.
 
 - <b>README.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).

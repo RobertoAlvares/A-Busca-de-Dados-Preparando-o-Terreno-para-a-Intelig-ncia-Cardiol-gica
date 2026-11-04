@@ -1,0 +1,38 @@
+CardioIA - vestivel cardiaco (Fase 3) iniciado
+Buffer offline: 1440 leituras
+[REDE] modo ONLINE
+[REDE] Wi-Fi conectado
+[MQTT] conectado ao broker
+{"seq":1,"t_ms":3076,"atraso_s":0,"temp":36.6,"umid":55.0,"bpm":0,"alerta":"sem_pulso","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":2,"t_ms":5080,"atraso_s":0,"temp":36.6,"umid":55.0,"bpm":53,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":3,"t_ms":7081,"atraso_s":0,"temp":36.6,"umid":55.0,"bpm":79,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":4,"t_ms":9082,"atraso_s":0,"temp":36.6,"umid":55.0,"bpm":77,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":5,"t_ms":11082,"atraso_s":0,"temp":38.6,"umid":55.0,"bpm":136,"alerta":"febre;taquicardia","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":6,"t_ms":13085,"atraso_s":0,"temp":38.6,"umid":55.0,"bpm":139,"alerta":"febre;taquicardia","origem":"tempo_real","buffer":1,"descartadas":0}
+[REDE] modo OFFLINE - gravando so no buffer
+[OFFLINE] guardada seq=7 temp=38.6 bpm=140 alerta=febre;taquicardia | buffer=1/1440
+[OFFLINE] guardada seq=8 temp=38.6 bpm=136 alerta=febre;taquicardia | buffer=2/1440
+[OFFLINE] guardada seq=9 temp=36.9 bpm=139 alerta=taquicardia | buffer=3/1440
+[REDE] modo ONLINE
+[MQTT] conectado ao broker
+[SYNC] conexao de volta: enviando 3 leitura(s) guardada(s) offline + a atual
+{"seq":7,"t_ms":15093,"atraso_s":6,"temp":38.6,"umid":55.0,"bpm":140,"alerta":"febre;taquicardia","origem":"buffer","buffer":4,"descartadas":0}
+{"seq":8,"t_ms":17100,"atraso_s":4,"temp":38.6,"umid":55.0,"bpm":136,"alerta":"febre;taquicardia","origem":"buffer","buffer":3,"descartadas":0}
+{"seq":9,"t_ms":19107,"atraso_s":2,"temp":36.9,"umid":55.0,"bpm":139,"alerta":"taquicardia","origem":"buffer","buffer":2,"descartadas":0}
+{"seq":10,"t_ms":21107,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":116,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":11,"t_ms":23111,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":75,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":12,"t_ms":25112,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":74,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":13,"t_ms":27113,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":75,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":14,"t_ms":29114,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":75,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":15,"t_ms":31115,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":73,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":16,"t_ms":33116,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":75,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":17,"t_ms":35117,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":75,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":18,"t_ms":37118,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":75,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":19,"t_ms":39119,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":74,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":20,"t_ms":41120,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":77,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":21,"t_ms":43121,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":75,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":22,"t_ms":45122,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":74,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":23,"t_ms":47123,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":75,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":24,"t_ms":49124,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":74,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":25,"t_ms":51125,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":72,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}
+{"seq":26,"t_ms":53126,"atraso_s":0,"temp":36.9,"umid":55.0,"bpm":74,"alerta":"normal","origem":"tempo_real","buffer":1,"descartadas":0}

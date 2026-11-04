@@ -8,7 +8,7 @@
 
 # CardioIA — plataforma de cardiologia inteligente
 
-## Grupo 19 (Fase 1) · Grupo 44 (Fase 2) — integrante único
+## Grupo 19 (Fase 1) · Grupo 44 (Fase 2) · Grupo 78 (Fase 3) — integrante único
 
 ## 👨‍🎓 Integrantes:
 - Roberto Almeida Alvares — RM568265
@@ -18,6 +18,31 @@
 - <a href="https://www.linkedin.com/in/leonardoorabona/">Leonardo Ruiz Orabona</a>
 ### Coordenador(a)
 - <a href="https://www.linkedin.com/in/andre-godoi-chiovato-83730228/">André Godoi Chiovato</a>
+
+## ✅ Fase 3 — onde está cada item do enunciado
+
+**Atividade: Monitoramento Contínuo – IoT na Saúde** (Cap. 1 — CardioIA Conectada).
+Fluxo completo: captura → processamento → transmissão → visualização → alerta.
+
+| Item do enunciado | Onde está |
+|---|---|
+| **Parte 1** · Link do projeto no Wokwi | **[WOKWI_LINK](WOKWI_LINK)** |
+| **Parte 1** · Código em C++ comentado | [`src/fase3/wokwi/sketch.ino`](src/fase3/wokwi/sketch.ino) · circuito: [`diagram.json`](src/fase3/wokwi/diagram.json) |
+| **Parte 1** · Mínimo de 2 sensores distintos (DHT22 obrigatório + 1 de livre escolha) | DHT22 (temperatura e umidade) + botão de pulso (batimentos → BPM) — [relatório Parte 1, seção 2](document/fase3_relatorio_parte1.md#2-sensores-mínimo-de-2-distintos) |
+| **Parte 1** · Conectividade Wi-Fi simulada (variável booleana) e envio via `Serial.println` apagando o local | `wifiSimulado`, controlada por chave deslizante — [seção 4](document/fase3_relatorio_parte1.md#4-simulação-da-conectividade-a-variável-booleana) |
+| **Parte 1** · Resiliência offline e estratégia de armazenamento limitado | buffer circular de **1 440 leituras = 24 h** a 1 leitura/min — [seção 5](document/fase3_relatorio_parte1.md#5-lógica-de-resiliência-offline) |
+| **Parte 1** · SPIFFS (opcional) | não usado: volátil no simulador; Monitor Serial como alternativa, como o enunciado permite — [seção 5](document/fase3_relatorio_parte1.md#5-lógica-de-resiliência-offline) |
+| **Parte 1** · Relatório (mín. 1 página): fluxo de funcionamento e lógica de resiliência | [`document/fase3_relatorio_parte1.md`](document/fase3_relatorio_parte1.md) |
+| **Parte 2** · Envio via MQTT e integração com broker (HiveMQ) | `broker.hivemq.com`, 3 tópicos, Last Will — [relatório Parte 2, seção 2](document/fase3_relatorio_parte2.md#2-o-fluxo-de-comunicação-mqtt) |
+| **Parte 2** · Dashboard Node-RED: **gráfico** do sinal vital | gráficos de BPM e de temperatura — [seção 3](document/fase3_relatorio_parte2.md#3-configuração-do-dashboard-node-red) |
+| **Parte 2** · Dashboard Node-RED: **medidor (gauge)** | gauges de temperatura e de BPM |
+| **Parte 2** · **Indicador visual de alerta** (> 120 bpm, > 38 °C) | LED virtual + texto, e notificação automática — [seção 3.2](document/fase3_relatorio_parte2.md#32-limites-de-alerta-definidos-pelo-grupo) |
+| **Parte 2** · Código do ESP32 | o mesmo `sketch.ino` (cliente MQTT incluso) |
+| **Parte 2** · Prints ou export do dashboard Node-RED | export: [`src/fase3/node-red/flow_cardioia.json`](src/fase3/node-red/flow_cardioia.json) · prints: [Evidências da Fase 3](#evidências-da-fase-3) |
+| **Parte 2** · Relatório (mín. 2 páginas): fluxo MQTT e configuração do dashboard | [`document/fase3_relatorio_parte2.md`](document/fase3_relatorio_parte2.md) |
+| Refletir sobre eficiência, segurança e boas práticas em IoT médico | [relatório Parte 2, seção 5](document/fase3_relatorio_parte2.md#5-eficiência-segurança-e-boas-práticas-em-iot-médico) |
+| Grafana (opcional) | não usado |
+| Ir Além 1 e Ir Além 2 (opcionais) | não entregues nesta fase |
 
 ## 🎥 Vídeos de demonstração
 
@@ -129,6 +154,45 @@ isso ao usuário no fim de cada execução. Dado de saúde é **dado pessoal
 sensível** (LGPD, Art. 5º, II); por isso todos os relatos e frases da Fase 2 são
 simulados, e nenhum dado real de paciente entra no repositório público.
 
+### Fase 3 — Monitoramento Contínuo: IoT na Saúde
+
+O CardioIA ganha um **vestível de monitoramento cardíaco** simulado em ESP32 no
+Wokwi. Dois sensores: o **DHT22** (temperatura corporal e umidade) e um **botão
+de pulso** — cada aperto é um batimento, e o ESP32 calcula a frequência cardíaca
+pelos intervalos.
+
+- **Edge (no paciente).** O ESP32 decide o alerta sozinho — febre (> 38 °C),
+  taquicardia (> 120 bpm), bradicardia, hipotermia, ausência de pulso — e acende
+  o LED vermelho **mesmo sem internet**. Toda leitura entra num **buffer
+  circular de 1 440 registros** (24 h a 1 leitura/min). Sem conexão, ele só
+  guarda; quando a conexão volta, descarrega do mais antigo para o mais novo e só
+  apaga depois de enviar.
+- **Cloud.** As leituras saem em JSON por **MQTT** para o broker público da
+  HiveMQ, em três tópicos (`vitais`, `alerta`, `status`), com **Last Will**: se o
+  vestível cair sem avisar, o broker publica `offline` por ele.
+- **Fog.** Um fluxo **Node-RED** valida a leitura, recalcula o alerta com os
+  mesmos limiares do dispositivo, reconstrói o horário das leituras que ficaram
+  no buffer e exibe tudo num dashboard com gráficos, gauges, LED virtual de
+  alerta e notificação automática.
+
+O protótipo usa broker público sem TLS porque trafega **apenas dado simulado**;
+o relatório da Parte 2 lista o que muda para dado real de paciente (TLS, ACL por
+tópico, pseudônimo, segredos fora do firmware).
+
+#### Evidências da Fase 3
+
+| | |
+|---|---|
+| Circuito no Wokwi | ![Circuito no Wokwi](assets/fase3/wokwi_circuito.png) |
+| Dashboard em estado normal | ![Dashboard normal](assets/fase3/dashboard_normal.png) |
+| Dashboard em alerta | ![Dashboard em alerta](assets/fase3/dashboard_alerta.png) |
+| Dashboard com o vestível **offline** (Last Will) | ![Dashboard offline](assets/fase3/dashboard_offline.png) |
+| Monitor Serial: modo offline e sincronização do buffer | ![Serial offline e sync](assets/fase3/serial_offline_sync.png) |
+| Volta da conexão: 3 leituras do buffer recebidas e **notificação automática** de alerta | ![Sincronização e notificação](assets/fase3/dashboard_sync_notificacao.png) |
+
+Log integral do Monitor Serial da sessão de teste:
+[`assets/fase3/serial_wokwi_04-11-2026.log`](assets/fase3/serial_wokwi_04-11-2026.log).
+
 ## 📁 Estrutura de pastas
 
 Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
@@ -136,12 +200,15 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 - <b>.github</b>: arquivos de configuração específicos do GitHub.
 
 - <b>assets</b>: elementos não-estruturados deste repositório, como imagens.
+  - `fase3/` — prints da Fase 3 (circuito, dashboard, Monitor Serial).
 
 - <b>config</b>: arquivos de configuração usados para definir parâmetros e ajustes do projeto.
 
 - <b>document</b>: documentos do projeto.
   - `fase1_relatorio.md` — relatório completo da Fase 1.
   - `ai_project_document_fiap.md` — documento de projeto no modelo da FIAP.
+  - `fase3_relatorio_parte1.md` — Fase 3, Parte 1: fluxo e resiliência offline (edge).
+  - `fase3_relatorio_parte2.md` — Fase 3, Parte 2: fluxo MQTT e dashboard (fog/cloud).
 
 - <b>scripts</b>: scripts auxiliares para tarefas específicas.
 
@@ -152,6 +219,8 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
   - `fase2/classificador_risco.ipynb` — Parte 2 em notebook: TF-IDF, classificação e avaliação, com a saída executada.
   - `fase2/classificador_risco.py` — o mesmo classificador, para rodar no terminal.
   - `fase2/dados/` — relatos, mapa de conhecimento, dataset rotulado e saídas.
+  - `fase3/wokwi/` — firmware do ESP32 (`sketch.ino`), circuito (`diagram.json`) e bibliotecas (`libraries.txt`).
+  - `fase3/node-red/flow_cardioia.json` — export do fluxo e do dashboard Node-RED.
 
 - <b>README.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
@@ -182,8 +251,32 @@ python classificador_risco.py
 Os resultados são reprodutíveis: divisão de treino/teste, validação cruzada e
 árvore de decisão usam semente fixa (42).
 
+**Fase 3, Partes 1 e 2 — ESP32 no Wokwi.** Abrir o [projeto no Wokwi](WOKWI_LINK)
+(ou criar um projeto ESP32 e colar os três arquivos de `src/fase3/wokwi/`) e
+clicar em ▶. Controles na simulação:
+
+- **chave deslizante** — direita = online, esquerda = offline;
+- **botão PULSO** — cada aperto é um batimento (1 por segundo ≈ 60 bpm);
+- **DHT22** — clicar no sensor e ajustar a temperatura (acima de 38 °C gera alerta).
+
+**Fase 3, Parte 2 — dashboard Node-RED** (requer Node.js 18+):
+
+```bash
+npm install -g node-red
+cd ~/.node-red && npm install node-red-dashboard
+node-red
+```
+
+Em `http://127.0.0.1:1880`: *Menu → Import* → colar
+`src/fase3/node-red/flow_cardioia.json` → *Deploy*. O dashboard fica em
+`http://127.0.0.1:1880/ui` e começa a mostrar dados assim que a simulação do
+Wokwi estiver rodando.
+
 ## 🗃 Histórico de lançamentos
 
+* 0.3.0 - 04/11/2026
+    * Fase 3: vestível ESP32 no Wokwi (DHT22 + pulso, alerta local, buffer
+      offline de 24 h), MQTT com Last Will e dashboard Node-RED com alertas.
 * 0.2.0 - 05/10/2026
     * Fase 2 completa: extração de sintomas (Parte 1) e classificador de risco
       TF-IDF com três modelos, validação cruzada e teste de estresse (Parte 2).

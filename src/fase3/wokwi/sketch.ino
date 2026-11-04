@@ -261,6 +261,11 @@ void setup() {
   dht.setup(PINO_DHT, DHTesp::DHT22);
   mqtt.setServer(MQTT_BROKER, MQTT_PORTA);
   mqtt.setBufferSize(512);
+  // Keepalive: intervalo máximo sem tráfego antes de o broker considerar o
+  // cliente morto (e disparar o Last Will "offline"). No Wokwi o tempo
+  // simulado corre bem mais devagar que o relógio do broker, então o padrão
+  // de 15 s derrubava a conexão a cada leitura. Num vestível real, 60 s.
+  mqtt.setKeepAlive(300);
   Serial.println("CardioIA - vestivel cardiaco (Fase 3) iniciado");
   Serial.print("Buffer offline: ");
   Serial.print(CAPACIDADE_BUFFER);

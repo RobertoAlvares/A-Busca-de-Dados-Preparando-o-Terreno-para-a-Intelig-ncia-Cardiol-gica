@@ -61,7 +61,7 @@ const char* TOPICO_STATUS = "cardioia/rm568265/paciente01/status";
 const unsigned long INTERVALO_LEITURA_MS = 2000;
 
 // Capacidade do buffer offline. Modelo de negócio: 1 leitura/min durante
-// 24 h sem conexão = 1440 registros (~24 KB de RAM, folgado nos 320 KB do
+// 24 h sem conexão = 1440 registros (~28 KB de RAM: 20 bytes cada, folgado nos 320 KB do
 // ESP32). Um dia inteiro fora de área cobre a ida do paciente para casa
 // depois da alta e uma noite sem Wi-Fi.
 const int CAPACIDADE_BUFFER = 1440;
@@ -228,12 +228,15 @@ String paraJson(const Leitura& l, const char* origem) {
 void sincronizarBuffer() {
   if (totalBuf == 0) return;
   int pendentes = totalBuf;
-  Serial.print("[SYNC] enviando ");
-  Serial.print(pendentes);
-  Serial.println(" leitura(s) guardada(s) offline");
+  if (pendentes > 1) {  // 1 só = a leitura que acabou de ser feita
+    Serial.print("[SYNC] conexao de volta: enviando ");
+    Serial.print(pendentes - 1);
+    Serial.println(" leitura(s) guardada(s) offline + a atual");
+  }
   while (totalBuf > 0) {
     const Leitura& l = buffer[inicioBuf];
-    const char* origem = (totalBuf == 1 && pendentes == 1) ? "tempo_real" : "buffer";
+    // A leitura mais recente é "tempo_real"; as anteriores esperaram offline.
+    const char* origem = (l.seq == proximoSeq - 1) ? "tempo_real" : "buffer";
     String json = paraJson(l, origem);
     if (!mqtt.publish(TOPICO_VITAIS, json.c_str())) {
       Serial.println("[SYNC] publicacao falhou; mantenho no buffer");
@@ -265,6 +268,9 @@ void setup() {
 }
 
 void loop() {
+  // Pausa curta: economiza energia (vestível a bateria) e deixa o simulador
+  // rodar em tempo real. 10 ms ainda pega qualquer aperto do botão de pulso.
+  delay(10);
   lerBotaoPulso();
 
   // Chave para a direita (lê HIGH) = conectividade simulada ligada.

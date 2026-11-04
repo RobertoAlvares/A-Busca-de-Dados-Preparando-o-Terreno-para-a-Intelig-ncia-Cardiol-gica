@@ -7,7 +7,7 @@ Entregáveis desta parte:
 
 | Entregável pedido | Onde está |
 |---|---|
-| Link do projeto no Wokwi | README, seção "Fase 3" (e no topo deste repositório) |
+| Link do projeto no Wokwi | https://wokwi.com/projects/479764753805053953 |
 | Código em C++ comentado | [`src/fase3/wokwi/sketch.ino`](../src/fase3/wokwi/sketch.ino) (circuito em [`diagram.json`](../src/fase3/wokwi/diagram.json)) |
 | Relatório do fluxo de funcionamento e da lógica de resiliência | este documento |
 

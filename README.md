@@ -26,7 +26,7 @@ Fluxo completo: captura → processamento → transmissão → visualização �
 
 | Item do enunciado | Onde está |
 |---|---|
-| **Parte 1** · Link do projeto no Wokwi | **[WOKWI_LINK](WOKWI_LINK)** |
+| **Parte 1** · Link do projeto no Wokwi | **[wokwi.com/projects/479764753805053953](https://wokwi.com/projects/479764753805053953)** |
 | **Parte 1** · Código em C++ comentado | [`src/fase3/wokwi/sketch.ino`](src/fase3/wokwi/sketch.ino) · circuito: [`diagram.json`](src/fase3/wokwi/diagram.json) |
 | **Parte 1** · Mínimo de 2 sensores distintos (DHT22 obrigatório + 1 de livre escolha) | DHT22 (temperatura e umidade) + botão de pulso (batimentos → BPM) — [relatório Parte 1, seção 2](document/fase3_relatorio_parte1.md#2-sensores-mínimo-de-2-distintos) |
 | **Parte 1** · Conectividade Wi-Fi simulada (variável booleana) e envio via `Serial.println` apagando o local | `wifiSimulado`, controlada por chave deslizante — [seção 4](document/fase3_relatorio_parte1.md#4-simulação-da-conectividade-a-variável-booleana) |
@@ -251,7 +251,7 @@ python classificador_risco.py
 Os resultados são reprodutíveis: divisão de treino/teste, validação cruzada e
 árvore de decisão usam semente fixa (42).
 
-**Fase 3, Partes 1 e 2 — ESP32 no Wokwi.** Abrir o [projeto no Wokwi](WOKWI_LINK)
+**Fase 3, Partes 1 e 2 — ESP32 no Wokwi.** Abrir o [projeto no Wokwi](https://wokwi.com/projects/479764753805053953)
 (ou criar um projeto ESP32 e colar os três arquivos de `src/fase3/wokwi/`) e
 clicar em ▶. Controles na simulação:
 
